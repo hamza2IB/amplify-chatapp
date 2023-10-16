@@ -1,0 +1,42 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-realtimechat-dev-100259-authRole",
+      "UnauthRoleArn": "arn:aws:iam::812096089383:role/amplify-realtimechat-dev-100259-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::812096089383:role/amplify-realtimechat-dev-100259-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-realtimechat-dev-100259-deployment",
+      "UnauthRoleName": "amplify-realtimechat-dev-100259-unauthRole",
+      "StackName": "amplify-realtimechat-dev-100259",
+      "StackId": "arn:aws:cloudformation:us-east-1:812096089383:stack/amplify-realtimechat-dev-100259/49c95910-6be1-11ee-bc92-1278b2d97047",
+      "AmplifyAppId": "d1rcgxrxnxk459"
+    }
+  },
+  "api": {
+    "realtimechat": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 7
+            }
+          },
+          "additionalAuthenticationProviders": []
+        },
+        "GraphQLAPIIdOutput": "n3vyyhzdmzelpnm2zecsrvq7ri",
+        "GraphQLAPIEndpointOutput": "https://452jojq2mral7myc26kgl437km.appsync-api.us-east-1.amazonaws.com/graphql",
+        "GraphQLAPIKeyOutput": "da2-l6ynqukec5d4tbhsp4m2g53bfy"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-realtimechat-dev-100259-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apirealtimechat"
+      },
+      "lastPushTimeStamp": "2023-10-16T06:50:36.074Z",
+      "lastPushDirHash": "ynmQhiqdGgAipNydiCkJSEU9jac="
+    }
+  }
+}

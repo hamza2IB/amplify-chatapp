@@ -1,0 +1,7 @@
+{
+    "AppSyncApiName": "realtimechat",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": false,
+    "S3DeploymentBucket": "amplify-realtimechat-dev-100259-deployment",
+    "S3DeploymentRootKey": "amplify-appsync-files/0110743f32dff32c61a25884fb51333b65390b37"
+}
