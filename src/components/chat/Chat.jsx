@@ -35,6 +35,7 @@ const Chat = () => {
   const [selectedChat, setSelectedChat] = useState(null);
   const [id, setId] = useState(null);
   const [sender, setSender] = useState(null);
+  const [fetch, setFetch] = useState(false);
 
   const userId = localStorage.getItem("userId")
     ? localStorage.getItem("userId")
@@ -70,14 +71,17 @@ const Chat = () => {
           });
           let newData = res.data.listInboxes.items;
           console.log(newData);
+          setFetch(false);
           setInbox(newData);
         } catch (error) {
           console.log(error);
+          setFetch(false);
         }
       }
     };
     getInboxes();
-  }, [userId]);
+    // eslint-disable-next-line
+  }, [userId, fetch]);
 
   useEffect(() => {
     const sub = API.graphql(graphqlOperation(onCreateMessage)).subscribe({
@@ -89,12 +93,10 @@ const Chat = () => {
     const sub3 = API.graphql(graphqlOperation(onUpdateMessage)).subscribe({
       next: (payload) => {
         const newMessage = payload.value.data.onUpdateMessage;
-        console.log(newMessage);
         setMessages((prev) => {
           const updatedIndex = prev.findIndex(
             (msg) => msg.messageId === newMessage.messageId
           );
-          console.log(updatedIndex);
           if (updatedIndex !== -1) {
             prev[updatedIndex] = newMessage;
           }
@@ -112,7 +114,7 @@ const Chat = () => {
     const sub2 = API.graphql(graphqlOperation(onUpdateInbox)).subscribe({
       next: (payload) => {
         const newInbox = payload.value.data.onUpdateInbox;
-
+        console.log(newInbox);
         setInbox((prev) => {
           const updatedIndex = prev.findIndex(
             (inbox) => inbox.inboxId === newInbox.inboxId
@@ -122,6 +124,7 @@ const Chat = () => {
           }
           return [...prev];
         });
+        setFetch(true);
       },
     });
     return () => {
@@ -217,7 +220,7 @@ const Chat = () => {
       console.log(res);
       if (res) {
         setMessage("");
-        if (selectedChat.deleteByOwner === true) {
+        if (selectedChat.deleteByOwner) {
           await API.graphql(
             graphqlOperation(updateInbox, {
               input: {
@@ -226,7 +229,7 @@ const Chat = () => {
               },
             })
           );
-        } else if (selectedChat.deleteByReceiver === true) {
+        } else if (selectedChat.deleteByReceiver) {
           await API.graphql(
             graphqlOperation(updateInbox, {
               input: {

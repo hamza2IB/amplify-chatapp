@@ -176,7 +176,7 @@ const Chatbox = ({
           </div>
           <div className="h-[82.75%] flex flex-col gap-2 border-b-[1px] border-b-gray-300 overflow-y-scroll p-3">
             {messages.map((val) => {
-              return <SingleMessage val={val} />;
+              return <SingleMessage val={val} key={val.messageId} />;
             })}
           </div>
           <div className="h-[11%] flex justify-around items-center w-full gap-2 px-3">

@@ -24,7 +24,7 @@ function App() {
       }
     };
     getUsers();
-  }, []);
+  }, [dispatch]);
   return (
     <Routes>
       <Route path="/" element={<Login />} />

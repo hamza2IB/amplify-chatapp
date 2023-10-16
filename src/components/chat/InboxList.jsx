@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { BsTrashFill } from "react-icons/bs";
 
 const InboxList = ({
